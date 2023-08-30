@@ -11,7 +11,8 @@ const routes: Routes = [
   {path:'',redirectTo:'/listings',pathMatch:'full'},
   {path:'listings',component:ListingsPageComponent,pathMatch:'full'},//using pathmatch full, to avoid misrouting that may navigates us to listings, even if the exact path is not listings(e.g: it is .../listings/1)
   {path:'listings/:id',component:ListingDetailPageComponent},
-  {path:'contact',component:ContactPageComponent},
+  {path:'contact/:id',component:ContactPageComponent},
+
   {path:'edit-listing/:id',component:EditListingPageComponent},
   {path:'my-listings',component:MyListingsPageComponent},
   {path:'new-listing',component:NewListingPageComponent}

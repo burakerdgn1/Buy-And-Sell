@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Listing } from '../models/list-item';
 import { fakeListings } from '../fake-data';
 
@@ -10,7 +10,7 @@ import { fakeListings } from '../fake-data';
 })
 export class ListingDetailPageComponent implements OnInit {
   listing:Listing|undefined;
-  constructor(private route:ActivatedRoute){
+  constructor(private route:ActivatedRoute,private router:Router){
 
   }
   ngOnInit(): void {
@@ -18,5 +18,6 @@ export class ListingDetailPageComponent implements OnInit {
     this.listing=fakeListings.find(listing=>listing.id===id)
 
   }
+
 
 }
