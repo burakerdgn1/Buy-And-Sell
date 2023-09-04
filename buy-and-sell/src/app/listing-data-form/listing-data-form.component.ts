@@ -24,7 +24,7 @@ export class ListingDataFormComponent implements OnInit {
   }
 
   onCreateListing(){
-    this.onSubmit.emit({id:'',name:this.name,description:this.description,price:Number(this.price)})
+    this.onSubmit.emit({id:'',name:this.name,description:this.description,price:Number(this.price),views:0})
 
   }
 
