@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ListingsService } from '../listings.service';
 
 @Component({
   selector: 'app-new-listing-page',
@@ -8,11 +9,14 @@ import { Router } from '@angular/router';
 })
 export class NewListingPageComponent {
   
-  constructor(private router:Router){}
+  constructor(private router:Router,private listingService:ListingsService){}
 
-  onSubmit(){
-    alert('Creating new listing...');
-    this.router.navigateByUrl('/my-listings')
+  onSubmit({name,description,price}:any){
+    this.listingService.createListing(name,description,price).subscribe(
+      ()=>{
+        this.router.navigateByUrl('/my-listings');
+      }
+    )
 
   }
 }

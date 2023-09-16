@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Listing } from '../models/list-item';
 import { fakeListings } from '../fake-data';
+import { ListingsService } from '../listings.service';
 
 @Component({
   selector: 'app-my-listings-page',
@@ -8,12 +9,17 @@ import { fakeListings } from '../fake-data';
   styleUrls: ['./my-listings-page.component.css']
 })
 export class MyListingsPageComponent implements OnInit {
+  constructor(private listingsService:ListingsService){}
   ngOnInit(): void {
-    this.listings=fakeListings;
+   this.listingsService.getListingsForUser().subscribe(listings=>this.listings=listings);
   }
   listings:Listing[]=[];
   onDeleteClicked(listingId:string){
-    alert(`Deleting the listing with id: ${listingId}`);
+    this.listingsService.deleteListing(listingId).subscribe(()=>{
+      this.listings=this.listings.filter(
+        listing=>listing.id!==listingId
+      )
+    })
 
   }
 
